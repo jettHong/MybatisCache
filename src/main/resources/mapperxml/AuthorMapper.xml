@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.AuthorMapper">
+  <resultMap id="BaseResultMap" type="org.example.domain.Author">
+    <!--@mbg.generated-->
+    <!--@Table author-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="bio" jdbcType="VARCHAR" property="bio" />
+    <result column="favourite_section" jdbcType="VARCHAR" property="favouriteSection" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="type_code" jdbcType="VARCHAR" property="typeCode" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, username, `password`, email, bio, favourite_section, create_time, type_code,
+    type_name
+  </sql>
+    <select id="getById" resultMap="BaseResultMap">
+        select * from author where id = #{id}
+    </select>
+    <select id="getById1" resultMap="BaseResultMap">
+        select * from author where id = #{id}
+    </select>
+    <select id="getById2" resultMap="BaseResultMap">
+        select * from author where id = #{id}
+    </select>
+    <select id="getById3" parameterType="Map" resultMap="BaseResultMap">
+        select * from author where id = #{id}
+    </select>
+    <select id="list" resultMap="BaseResultMap">
+        select * from author
+        <where>
+            <if test="cond == 1">
+                id = #{id}
+            </if>
+            <if test="cond == 2">
+                id = #{id} and 1=1
+            </if>
+        </where>
+    </select>
+</mapper>

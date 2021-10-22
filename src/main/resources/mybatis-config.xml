@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 这些属性可以在外部进行配置，并可以进行动态替换。
+    你既可以在典型的 Java 属性文件中配置这些属性，也可以在 properties 元素的子元素中设置。 -->
+    <properties resource="mybatis-config-ext.properties">
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </properties>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3308/mybatis"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mapperxml/AuthorMapper.xml"/>
+    </mappers>
+</configuration>
